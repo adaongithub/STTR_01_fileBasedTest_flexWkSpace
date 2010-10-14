@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+  width="321" height="297" verticalScrollPolicy="off" horizontalScrollPolicy="off"
+   title="A2JTest02_Requester">
+
+
+  <mx:Script>
+    <![CDATA[
+      
+    public function saveApp():void {
+      var file:File = File.desktopDirectory.resolvePath( "A2JTest02_requests.txt" ); 
+      var jot:String = taEditor.text; 
+      var stream:FileStream = new FileStream(); 
+      stream.open( file, FileMode.WRITE ); 
+      stream.writeMultiByte( jot, File.systemCharset ); 
+      stream.close(); 
+    }   
+      
+    public function closeApp():void {
+      NativeApplication.nativeApplication.exit();
+    }
+         
+    ]]>
+  </mx:Script>
+
+    
+  <mx:TextArea id="taEditor" x="13.5" y="10" width="292" height="197"/>
+  <mx:Button id="btnClose" x="100.5" y="215" label="Close" click="closeApp()"/>
+  <mx:Button id="btnSave" x="161.5" y="215" label="Save" click="saveApp()"/>
+  
+</mx:WindowedApplication>
