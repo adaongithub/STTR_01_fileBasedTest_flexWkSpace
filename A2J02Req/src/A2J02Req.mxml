@@ -1,35 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:WindowedApplication xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
-  width="321" height="350" verticalScrollPolicy="off" horizontalScrollPolicy="off"
-   title="A2J02Req">
-
-
+  width="591.3043" height="567.73914" verticalScrollPolicy="off" horizontalScrollPolicy="off"
+   title="A2J02Req" horizontalAlign="center" creationComplete="init();">
+ 
   <mx:Script>
-    <![CDATA[
-      
-    public function saveApp():void {
-      var file:File = File.desktopDirectory.resolvePath( taReqFilename.text ); 
-      var jot:String = taEditor.text; 
-      var stream:FileStream = new FileStream(); 
-      stream.open( file, FileMode.WRITE ); 
-      stream.writeMultiByte( jot, File.systemCharset ); 
-      stream.close(); 
-    }   
-      
-    public function closeApp():void {
-      NativeApplication.nativeApplication.exit();
-    }
-         
-    ]]>
+  	<![CDATA[
+  		import mx.controls.Alert;
+  		
+  		public function init() : void
+  		{
+  		  Alert.show("WindowedApplication.creationComplete");
+  		  while ( false )
+  		  {
+  		  	;
+  		  };
+  		}
+  	]]>
   </mx:Script>
 
-    
-  <mx:TextArea id="taEditor" x="13.5" y="10" width="292" height="197" text="(  &quot;request:&quot;, { &quot;transactionID:&quot;, 1 }, { &quot;weightmesurement:&quot;, null }  }"/>
 
-  <mx:Button id="btnClose" x="100.5" y="215" label="Close" click="closeApp()"/>
-  <mx:Button id="btnSave" x="161.5" y="215" label="Save" click="saveApp()"/>
-  <mx:TextArea x="67.5" y="265" id="taReqFilename" text="A2J02Req_requests.txt" height="20" width="184"/>
-  <mx:Text x="10" y="246" text="Request File Name:" fontWeight="bold"/>
-  <mx:Text x="10" y="266" text="Desktop/" fontWeight="bold"/>
+
+<mx:Script source="scripts/A2J02ReqCode.as"/>
+
+    
+  <mx:TextArea id="taEditor" x="119.5" y="107" width="186" height="85" text="(  &quot;request:&quot;, { &quot;transactionID:&quot;, 1 }, { &quot;weightmeasurement:&quot;, null }  }"/>
+  <mx:TextArea id="taEditor0" x="13.5" y="428" width="292" height="102"/>
+
+  <mx:Button id="btnClose" x="253" y="538" label="Close" click="closeApp()"/>
+  <mx:Button id="btnSave" x="13" y="285.3" label="Poll: Write RD when OBF is empty" click="saveApp()"/>
+  <mx:Text x="10" y="9" text="Outbound File (Request) Name:" fontWeight="bold"/>
+  <mx:Text x="10" y="85" text="Outbound Data (Request)" fontWeight="bold"/>
+  <mx:Text x="132.95" y="198.95" text="TID:" fontWeight="bold"/>
+  <mx:Text x="10" y="405" text="Inbound (Response) Data:" fontWeight="bold"/>
+  <mx:Text x="10" y="29" text="Desktop/" fontWeight="bold"/>
+  <mx:Text x="10" y="330" text="Inbound (Response) File Name:" fontWeight="bold"/>
+  <mx:Text x="10" y="350" text="Desktop/" fontWeight="bold"/>
+  <mx:HRule width="300" x="10" y="315.15" height="8"/>
+
+  <mx:VBox height="141" width="107.29167" horizontalAlign="left" verticalAlign="top" x="9.2" y="106.15" verticalGap="0" fontSize="10" paddingLeft="4">
+    <mx:RadioButtonGroup id="radiogroup1"/>
+    <mx:RadioButton label="weight" groupName="radiogroup1"/>
+    <mx:RadioButton label="bloodPressure" groupName="radiogroup1"/>
+    <mx:RadioButton label="bloodOxygen" groupName="radiogroup1"/>
+    <mx:RadioButton label="bloodGlucose" groupName="radiogroup1"/>
+    <mx:RadioButton label="Button 5" groupName="radiogroup1"/>
+  </mx:VBox>
+  <mx:Button id="btnSave0" y="222.9" label="TID := 1" click="saveApp()" x="124.3" width="75" height="22"/>
+  <mx:Button id="btnSave1" x="235.85" y="285.3" label="Stop Poll" click="saveApp()" width="87.91304" height="22"/>
+  <mx:Button id="btnSave8" x="13" y="256.05" label="Write RD to OBF" click="saveApp()"/>
+  <mx:TextInput x="77.14996" y="27" text="A2J02Req_requests.txt" id="taReqFilename" width="223.7" height="21.45"/>
+  <mx:TextInput x="76.94998" y="348" text="A2J02Req_responses.txt" id="taReqFilename0" width="223.7" height="21.45"/>
+  <mx:Button id="btnSave3" label="Empty" click="saveApp()" x="164.75" y="56.45" width="64" height="22"/>
+  <mx:Button id="btnSave2" label="Empty Inbound File" click="saveApp()" x="76.9" y="377.45" width="223.67348" height="22.040817"/>
+  <mx:Button id="btnSave4" label="Delete" click="saveApp()" x="92.85" y="56.45" width="64" height="22"/>
+  <mx:Button id="btnSave5" label="Create" click="saveApp()" x="21.05" y="56.45" width="64" height="22"/>
+  <mx:Button id="btnSave6" y="222.9" label="TID ++" click="saveApp()" x="220.75" width="75" height="22"/>
+  <mx:TextArea x="323" y="28" width="232.13045" height="50.43478"/>
+  <mx:Button id="btnSave7" label="Read --&gt;" click="saveApp()" x="236.6" y="56.45" width="78.565216" height="22"/>
+  <mx:Text x="323" y="9" text="Outbound File (Request) Contents:" fontWeight="bold"/>
+  <mx:TextInput x="164" y="197" width="131.73914" height="22"/>
+  <mx:Button x="230" y="7" label="Alert()" click="Alert.show('Click')"/>
   
 </mx:WindowedApplication>
